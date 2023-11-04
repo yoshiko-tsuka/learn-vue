@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <div id="app">
+            <ul><li v-for="name in names" v-text="name"></li></ul>
+            <input id="input" type="text" v-model="newName">
+            <button @click="addName">Add name</button>
+        </div>        
+
+        <script>
+            const { createApp, ref} = Vue
+
+            var app = createApp({
+                setup() {
+                    const newName = ref('')
+                    const names = ref(['Joe','Ken'])
+                    const addName = () => {
+                        names.value.push(newName.value)
+                        newName.value = ''
+                    }
+                    return {
+                        newName,
+                        names,
+                        addName
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

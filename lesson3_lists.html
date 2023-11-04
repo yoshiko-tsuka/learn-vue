@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <div id="app">
+            <ul><li v-for="name in names" v-text="name"></li></ul>
+            <input id="input" type="text">
+            <button id="button">Add name</button>
+        </div>        
+
+        <script>
+            const { createApp, ref} = Vue
+
+            var app = createApp({
+                setup() {
+                const names = ref(['Joe','Ken'])
+                return {
+                    names
+                }
+                },
+                mounted() {
+                    alert('mounted');
+                    document.querySelector('#button').addEventListener('click', () => {
+                        var name = document.querySelector('#input');
+
+                        app.names.push(name.value);
+
+                        name.value = '';
+                    })
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

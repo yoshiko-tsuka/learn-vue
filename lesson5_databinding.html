@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <style type="text/css">
+            .color-red { color: red }
+            .color-blue { color: blue }
+            .is-loading { background: red }
+        </style>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <div id="app">
+            <h1 :class="classname">Hello world</h1>
+            <button :title="title" @click="">Hover over me</button>
+            <button :class=" {'is-loading' : isLoading }" @click="toggleClass">Click me</button>
+        </div>        
+
+        <script>
+            const { createApp, ref} = Vue
+
+            var app = createApp({
+                setup() {
+                    const title = ref('Now the title is being set through JavaScript')
+                    const classname = ref('color-red')
+                    const isLoading = ref(false)
+                    const toggleClass = () => {
+                        isLoading.value = !isLoading.value
+                    }
+                    return {
+                        title,
+                        classname,
+                        isLoading,
+                        toggleClass
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>
