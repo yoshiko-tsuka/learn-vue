@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <style type="text/css">
+        body {
+            padding-top: 80px;
+        }
+        </style>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <div id="app" class="container">
+            <tabs>
+                <tab v-for="(tab, i) in tabs" :name="tab.name" :class="{ 'is-active': tab.isActive }" @click="activateTab(i)"></tab>
+            </tabs>
+            <div class="tabs-details" v-html="content"></div>
+        </div>
+        
+        <script src="main.js"></script>
+    </body>
+</html>
