@@ -3,9 +3,9 @@ const { createApp, ref, computed } = Vue
 const app = createApp({
     setup() {
         const tabs = ref([
-            { name: 'aa', isActive: true, content: '<h1>aa</h1>'},
-            { name: 'bb', isActive: false, content: '<h1>bb</h1>'},
-            { name: 'cc', isActive: false, content: '<h1>cc</h1>'}
+            { name: 'Hello World', isActive: true, content: '<h1>aa</h1>'},
+            { name: 'Konnichiwa World', isActive: false, content: '<h1>bb</h1>'},
+            { name: 'Hello Univers', isActive: false, content: '<h1>cc</h1>'}
         ])
         const content = computed(() => {
             return tabs.value.filter((tab) => tab.isActive )[0].content
@@ -36,6 +36,14 @@ app.component('tab', {
         }
 
     },
-    template: '<li :class="{ \'is-active\': isActive }"><a>{{ name }}</a></li>',
+    template: '<li :class="{ \'is-active\': isActive }"><a :href="href">{{ name }}</a></li>',
+    setup(props) {
+        const href = computed(() => {
+            return '#' + props.name.toLowerCase().replace(/ /g, '-')
+        })
+        return {
+            href
+        }
+    }
 })
 app.mount('#app')
