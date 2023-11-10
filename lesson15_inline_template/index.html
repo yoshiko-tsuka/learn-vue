@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <style type="text/css">
+        body {
+            padding-top: 80px;
+        }
+        </style>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <div id="app" class="container">
+            <progress-vue inline-template>
+                <div>
+                    <!-- Inline Template Attribute is breaking at vue3 -->
+                    <h1>Your Progress Through This Course is {{ completionRate }}%</h1>
+                    <p><button @click="completionRate += 10">Update Completion Rate</button></p>
+                </div>
+            </progress-vue>
+        </div>
+        
+        <script src="main.js"></script>
+    </body>
+</html>
